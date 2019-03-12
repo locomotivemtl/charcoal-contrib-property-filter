@@ -6,7 +6,7 @@ namespace Charcoal\PropertyFilter;
 use Charcoal\App\Module\AbstractModule;
 
 /**
- * Formio Module
+ * Property Filter Module
  */
 class PropertyFilterModule extends AbstractModule
 {

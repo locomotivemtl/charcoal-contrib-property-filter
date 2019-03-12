@@ -1,7 +1,13 @@
 {
     "admin": {
         "assets": {
-
+            "collections": {
+                "property_filter_js": {
+                    "files": [
+                        "vendor/locomotivemtl/charcoal-contrib-property-filter/assets/dist/scripts/charcoal.property-filter.min.js"
+                    ]
+                }
+            }
         }
     }
 }

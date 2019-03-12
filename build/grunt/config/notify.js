@@ -10,7 +10,7 @@ module.exports = {
     },
     build: {
         options: {
-            message: 'Formio assets are compiled'
+            message: 'Property Filter assets are compiled'
         }
     },
     javascript: {
