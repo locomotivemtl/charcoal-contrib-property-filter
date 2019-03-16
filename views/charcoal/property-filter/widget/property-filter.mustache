@@ -51,3 +51,13 @@
         </div>
     </div>
 </form>
+
+{{ assets.enqueue.js.property_filter_js }}
+{{# assets.inject.js }}
+    Charcoal.Admin.manager().add_widget({
+        id:   '{{ widgetId }}',
+        type: '{{ type }}',
+        widget_type: '{{ type }}',
+        data: {{& widgetDataForJsAsJson }}
+    });
+{{/ assets.inject.js }}
