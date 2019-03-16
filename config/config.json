@@ -3,5 +3,8 @@
         "paths": [
             "vendor/locomotivemtl/charcoal-contrib-property-filter/views/"
         ]
+    },
+    "metadata": {
+        "paths": []
     }
 }

@@ -80,6 +80,14 @@ class PropertyFilterWidget extends AdminWidget implements
     }
 
     /**
+     * @return string
+     */
+    public function type()
+    {
+        return 'charcoal/property-filter/widget/property-filter';
+    }
+
+    /**
      * @param array $data The widget data.
      * @return self
      */
@@ -138,6 +146,7 @@ class PropertyFilterWidget extends AdminWidget implements
         foreach ($activeFilters as $propertyIdent => $propertyMetadata) {
             $prop = $this->createFormProperty($propertyMetadata);
             $prop->setPropertyIdent($propertyIdent);
+
 
             if (!empty($propOptions[$propertyIdent])) {
                 $propertyOptions = $propOptions[$propertyIdent];
