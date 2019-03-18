@@ -44,38 +44,70 @@ $ composer require locomotivemtl/charcoal-contrib-property-filter
 #### Required
 
 -   [**PHP 5.6+**](https://php.net): _PHP 7_ is recommended.
-
-
-
-#### PSR
-
---TBD--
-
-
-
-## Service Provider
-
-### Parameters
-
---TBD--
-
-
-
-### Services
-
---TBD--
-
+-   [charcoal-admin][charcoal-admin] ^0.14.2.
 
 
 ## Configuration
 
---TBD--
+Include the property-filter module in the projects's config file.
+This will provide everything needed for [charcoal-contrib-property-filter] to work properly.
+No need for metadata/views/action/routes path etc.
 
+```Json
+{
+    "modules": {
+       "charcoal/property-filter/property-filter": {}
+    }
+}
+```
 
 
 ## Usage
 
---TBD--
+[charcoal-contrib-property-filter] can be used as a dashboard widget to filter all the filterable widgets
+included in the template. Define a structure like this one :point_down: in a dashboard widget to create filters.
+
+```Json
+{
+    "filters": {
+        "type": "charcoal/property-filter/widget/property-filter",
+        "property_filters": [
+            "taxonomy_1",
+            "taxonomy_2",
+            "taxonomy_3"
+        ],
+        "properties_options": {
+            "taxonomy_1": {
+                "required": false,
+                "multiple": true,
+                "input_type": "charcoal/admin/property/input/select"
+            },
+            "taxonomy_2": {
+                "required": false,
+                "input_type": "charcoal/admin/property/input/radio"
+            },
+            "taxonomy_3": {
+                "required": false,
+                "input_type": "charcoal/admin/property/input/checkbox"
+            }
+        },
+        "layout": {
+            "structure": [
+                {"columns": [1, 1, 1]}
+            ]
+        }
+    }
+}
+```
+
+## Options
+
+| Key                  | Values | Default | Description                                                |
+| :---                 | :---:  | :---:   | ---                                                        |
+| `properties`         | Array  | n/a     | Defines which of the model's properties to use as filters. |
+| `properties_options` | Array  | n/a     | Defines property customizations for the filter inputs      |
+| `layout`             | Array  | n/a     | Arrange the filters in a layout using structures           |
+
 
 
 
@@ -93,6 +125,22 @@ To run the scripts (phplint, phpcs, and phpunit):
 $ composer test
 ```
 
+### Assets
+
+To install assets build environment: 
+
+```shell
+$ yarn insall
+```
+
+To run the build scripts: 
+```shell
+$ grunt watch
+```
+or
+```shell
+$ grunt
+```
 
 
 ### API Documentation
@@ -140,6 +188,7 @@ Charcoal is licensed under the MIT license. See [LICENSE](LICENSE) for details.
 
 [charcoal-contrib-property-filter]:  https://packagist.org/packages/locomotivemtl/charcoal-contrib-property-filter
 [charcoal-app]:             https://packagist.org/packages/locomotivemtl/charcoal-app
+[charcoal-admin]:           https://packagist.org/packages/locomotivemtl/charcoal-admin
 
 [dev-scrutinizer]:    https://scrutinizer-ci.com/g/locomotivemtl/charcoal-contrib-property-filter/
 [dev-coveralls]:      https://coveralls.io/r/locomotivemtl/charcoal-contrib-property-filter
