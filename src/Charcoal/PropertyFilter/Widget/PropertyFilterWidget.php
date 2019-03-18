@@ -147,7 +147,6 @@ class PropertyFilterWidget extends AdminWidget implements
             $prop = $this->createFormProperty($propertyMetadata);
             $prop->setPropertyIdent($propertyIdent);
 
-
             if (!empty($propOptions[$propertyIdent])) {
                 $propertyOptions = $propOptions[$propertyIdent];
 
