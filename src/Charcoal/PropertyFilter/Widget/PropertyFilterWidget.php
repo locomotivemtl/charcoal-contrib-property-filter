@@ -141,7 +141,8 @@ class PropertyFilterWidget extends AdminWidget implements
         $props       = $obj->metadata()->properties();
         $propOptions = $this->propertiesOptions();
 
-        $activeFilters = array_intersect_key($props, array_flip($this->propertyFilters()));
+        $propertiesFiltersAsKeys = array_flip($this->propertyFilters());
+        $activeFilters = array_intersect_key(array_replace($propertiesFiltersAsKeys, $props), $propertiesFiltersAsKeys);
 
         foreach ($activeFilters as $propertyIdent => $propertyMetadata) {
             $prop = $this->createFormProperty($propertyMetadata);
