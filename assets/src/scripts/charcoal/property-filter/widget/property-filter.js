@@ -1,5 +1,5 @@
 /* global Charcoal */
-;(function () {
+;(function ($) {
     /**
      * Property filter widget used for filtering a list
      * `charcoal/property-filter/widget/property-filter`
@@ -10,6 +10,10 @@
      * @param  {Object}  opts Options for widget
      */
     var PropertyFilter = function (opts) {
+        if (!opts.data.properties_options) {
+            opts.data.properties_options = {};
+        }
+
         Charcoal.Admin.Widget.call(this, opts);
     };
 
@@ -28,8 +32,7 @@
         }.bind(this));
 
         this.$form.on('click.charcoal.property.filter', '.js-filter-reset', this.clear.bind(this));
-
-        };
+    };
 
     /**
      * Resets the filter widgets.
@@ -59,7 +62,7 @@
             data    = this.$form.serializeArray();
             fields  = this.$form.find(':input').serializeArray();
 
-            jQuery.each(fields, function (i, field) {
+            $.each(fields, function (i, field) {
                 var p_ident = field.name.replace(/(\[.*)/gi, '');
                 if (!!field.value) {
                     if (!filters.hasOwnProperty(p_ident)) {
@@ -87,7 +90,7 @@
      * @return {object|null} A search request object or NULL.
      */
     PropertyFilter.prototype.prepare_request = function (p_filters) {
-        var request = null, filters = [], sub_filters;
+        var request = null, filters = [], sub_filters, opts, data = this.opts('data');
 
         $.each(p_filters, function (prop, filter_array) {
             sub_filters = [];
@@ -98,8 +101,10 @@
                 });
             });
 
+            opts = data.properties_options[prop] || {};
+
             filters.push({
-                conjunction: 'AND',
+                conjunction: opts.conjunction || 'AND',
                 filters:     sub_filters
             });
         });
@@ -146,4 +151,4 @@
     };
 
     Charcoal.Admin.Widget_Property_Filter = PropertyFilter;
-}(jQuery, document));
+}(jQuery));

@@ -107,7 +107,10 @@ class PropertyFilterWidget extends AdminWidget implements
      */
     protected function defaultDataSources()
     {
-        return [static::DATA_SOURCE_REQUEST, static::DATA_SOURCE_OBJECT];
+        return [
+            static::DATA_SOURCE_REQUEST,
+            static::DATA_SOURCE_OBJECT,
+        ];
     }
 
     /**
@@ -130,6 +133,18 @@ class PropertyFilterWidget extends AdminWidget implements
     public function dataFromRequest()
     {
         return $this->httpRequest()->getParams($this->acceptedRequestData());
+    }
+
+    /**
+     * Retrieve the widget's data options for JavaScript components.
+     *
+     * @return array
+     */
+    public function widgetDataForJs()
+    {
+        return [
+            'properties_options' => $this->propertiesOptions(),
+        ];
     }
 
     /**
