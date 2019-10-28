@@ -12,6 +12,15 @@
         "notify:build"
     ],
 
+    "scripts": [
+        "concat",
+        "jscs",
+        "jshint",
+        "jsonlint",
+        "uglify",
+        "notify:build"
+    ],
+
     "sync": [
         "browserSync",
         "watch",

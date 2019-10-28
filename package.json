@@ -4,9 +4,7 @@
     "title": "Charcoal Contrib Property Filter",
     "version": "1.0.0",
     "author": "Locomotive <info@locomotive.ca>",
-    "dependencies": {
-
-    },
+    "dependencies": {},
     "devDependencies": {
         "autoprefixer": "7.1.6",
         "glob": "7.1.2",
